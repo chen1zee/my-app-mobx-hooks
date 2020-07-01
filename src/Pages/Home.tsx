@@ -1,9 +1,22 @@
-import React from "react";
+import React, {useCallback} from "react";
+import {useHistory} from 'react-router-dom'
 
-function Home() {
+type Props = {
+  aaa: string
+}
+
+function Home({
+  aaa
+              }: Props) {
+  const history = useHistory()
+  const goLogin = useCallback(() => {
+    history.push("/login")
+    console.log(aaa)
+  }, [aaa, history])
   return (
     <div>
-      home
+      home {aaa}
+      <button onClick={goLogin}>login</button>
     </div>
   )
 }
